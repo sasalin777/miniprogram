@@ -14,7 +14,7 @@ public class guessletter {
     public static void main(String[] args) throws IOException {
 
         try {
-            final String file="cities.txt";
+            final String file="src/cities.txt";
 
 
 
@@ -28,19 +28,19 @@ public class guessletter {
             f.seek(randomLocation);
             f.readLine();
             String resultcity=f.readLine();
-            System.out.print(resultcity);
+            //System.out.print(resultcity);
             /**
              * string convert to string array string
              */
 
             String stringArray=resultcity;
             String[] newArray =stringArray.split("(?!^)");
-            System.out.println(Arrays.toString(newArray));
+            //System.out.println(Arrays.toString(newArray));
 
-            System.out.println(newArray[2]);//check 2nd letter of city
+            //System.out.println(newArray[2]);//check 2nd letter of city
             int l=newArray.length;//city letter length
-            System.out.printf("newArray length: %d\n",l);
-            System.out.println("=============================================\n\n");
+            //System.out.printf("newArray length: %d\n",l);
+            //System.out.println("=============================================\n\n");
             int counttimes=0;
             int counttimes2=0;
             String[] newArray2=new String[newArray.length];
