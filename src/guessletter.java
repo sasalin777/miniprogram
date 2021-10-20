@@ -79,7 +79,7 @@ public class guessletter {
                 for (int j = 0; j <= l - 1; j++) {
                     //  String arrayString = Arrays.toString(newArray);
                     String abc = newArray[j];
-                    if (abc.equals(strGuess)) {
+                    if (abc.equalsIgnoreCase(strGuess)) {
                         newArray2[j] = newArray[j];
                         counttimes2 -= 1;
 
