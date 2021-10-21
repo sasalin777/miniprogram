@@ -2,16 +2,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-
 public class guessletter {
 
 
 
 
-    public static void main(String[] args) throws IOException {
+    public static <ArrayyList> void main(String[] args) throws IOException {
 
         try {
             final String file="src/cities.txt";
@@ -28,11 +28,12 @@ public class guessletter {
             f.seek(randomLocation);
             f.readLine();
             String resultcity=f.readLine();
-            //System.out.print(resultcity);
+            System.out.print(resultcity);
+            System.out.print("\n");
             /**
              * string convert to string array string
              */
-
+            ArrayList<String> disPlaywrongletter=new ArrayList();
             String stringArray=resultcity;
             String[] newArray =stringArray.split("(?!^)");
             //System.out.println(Arrays.toString(newArray));
@@ -43,6 +44,7 @@ public class guessletter {
             //System.out.println("=============================================\n\n");
             int counttimes=0;
             int counttimes2=0;
+            int checkWrong=0;
             String[] newArray2=new String[newArray.length];
 
 
@@ -75,24 +77,25 @@ public class guessletter {
                 String strGuess = scanner.nextLine();//for using input
                 System.out.printf("You are guessing:%s\n", strGuess);
                 counttimes2=0;
+                checkWrong=0;
 
                 for (int j = 0; j <= l - 1; j++) {
+
                     //  String arrayString = Arrays.toString(newArray);
                     String abc = newArray[j];
                     if (abc.equalsIgnoreCase(strGuess)) {
                         newArray2[j] = newArray[j];
                         counttimes2 -= 1;
-
-
-
-                    }
+                    } else {checkWrong+=1;}
                     if (counttimes2<=-1) {
                         counttimes2 = -1;
                     }
                         else{counttimes2=0;}
 
+                    if (  checkWrong == l) { disPlaywrongletter.add(strGuess);}
 
                 }
+
 
 
 
@@ -107,12 +110,12 @@ public class guessletter {
                 }
 
 
-
-                System.out.printf("\nYou have guessed(%d) wrong letters:\n", counttimes);
+                String SdisPlaywrongletter=String.join(",",disPlaywrongletter);
+                System.out.printf("\nYou have guessed(%,d) wrong letters:%s\n", counttimes,SdisPlaywrongletter);
 
                 if ((counttimes == 10) & !((rets.equals(rets2)))) {
-                    System.out.println("You lost! You guessed (10) wrong letter:xxxxxxxxxx");
-                    System.out.printf("The correct word was '%s'!", resultcity);
+                    System.out.printf("You lost! You guessed (10) wrong letter:%s",SdisPlaywrongletter);
+                    System.out.printf("\nThe correct word was '%s'!", resultcity);
 
 
                     break;}
